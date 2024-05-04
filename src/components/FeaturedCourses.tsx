@@ -3,6 +3,8 @@
 import Link from "next/link";
 import courseData from "../data/music_courses.json";
 import { BackgroundGradient } from "./ui/background-gradient";
+import { BaseButton } from "./ui/base-button";
+import { Heading } from "./ui/heading";
 
 export interface Course {
   id: number;
@@ -19,14 +21,10 @@ export const FeaturedCourses = () => {
   const courses = courseData.courses.filter((course) => course.isFeatured);
   return (
     <div className="py-12 bg-gray-900">
-      <div className="text-center">
-        <h2 className="uppercase text-base font-medium text-teal-600 tracking-wider">
-          Featured courses
-        </h2>
-        <p className="mt-2 text-3xl leading-8 font-semibold text-white tracking-tight sm:text-4x">
-          Learn With the Best
-        </p>
-      </div>
+      <Heading
+        main_heading="Featured courses"
+        sub_heading="Learn With the Best"
+      />
       <div className="mt-10 w-[90%] lg:w-[80%] max-w-[100%] mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-center">
           {courses.map((item) => (
@@ -52,12 +50,13 @@ export const FeaturedCourses = () => {
         </div>
       </div>
       <div className="mt-20 text-center">
-        <Link
+        {/* <Link
           href="/courses"
           className="px-4 py-2 rounded border border-neutral-500 bg-white text-neutral-600 transition duration-100 hover:bg-blue-500 hover:text-white hover:border-blue-500"
         >
           View All Courses
-        </Link>
+        </Link> */}
+        <BaseButton buttonText="View All Courses" buttonHref="courses" />
       </div>
     </div>
   );
